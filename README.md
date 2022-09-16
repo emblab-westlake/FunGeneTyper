@@ -116,6 +116,8 @@ python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
 
 ---
 
+
+
 **Train**
 
 You can also train a class-level classification or group-level classification model based on your own data, refer to the examples we gave. Taking the training of resistance genes (ARGs) as an example, you can train the class classification by running the following code:
@@ -124,7 +126,7 @@ You can also train a class-level classification or group-level classification mo
 python Train_class.py --Train_category 20
 ```
 
-`--Train_category`: Number of categories to classify
+`--Train_category`: Number of categories to classify ##Todo, modify 
 
 
 
@@ -133,12 +135,4 @@ Similarly, you can train the Group classification by running the following code:
 ```python
 python Train_group.py
 ```
-
-
-
-
-
-
-
-
 
