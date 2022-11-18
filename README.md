@@ -52,52 +52,19 @@ pip install biopython
 
 ####:house_with_garden:  **Description**
 
-FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save a large-scale pre-trained model parameter locally and only needs to download or upload a small number of Adapter parameters separately for each functional annotation task. The Adapter architecture is not only conducive to model training but also more convenient for others in the community to use, thereby building a more powerful protein function annotation community
+FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save a large-scale pre-trained model parameter locally and only needs to download or upload a small number of Adapter parameters separately for each functional annotation task. The Adapter architecture is not only conducive to model training but also more convenient for others in the community to use, thereby building a more powerful protein function annotation community.
 
-####:houses: Test & Train
 
-In a single GPU or CPU environment, run `classifier.py`. In addition, to speed up functional protein annotation, an easy-to-use program that uses multiple GPUs simultaneously is also provided as `classifier_Multi_GPUs.py`
-
-```python
-# Take an example of the class and group classification of resistance genes
-# Using CPU
-python Test_model.py \
---input example/Resistance_gene/test.fasta \
---output example/Resistance_gene/output_class.txt \
---adapter ARGs \
---group \
---nogpu
-
-# Using GPU 
-python Test_model.py \
---input example/Resistance_gene/test.fasta \
---output example/Resistance_gene/output_class.txt \
---adapter ARGs \
---group \
---gpu 0
-
-# Using Multi-GPUs
-CUDA_VISIBLE_DEVICES="0,1" 
-python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
---input example/Resistance_gene/test.fasta \
---output example/Resistance_gene/output_class.txt \
---adapter ARGs \
---group 
--------------------------------------------
-python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
---input example/Resistance_gene/test.fasta \
---output example/Resistance_gene/output_class.txt \
---adapter ARGs \
---group 
-```
 
 **Parameters**
+
+python classifier.py -h
 
 - `--input` : 
   - The input protein sequence file is required to be in fasta format.
 
 - `--output`: 
-  - This is the output result file.
+  - This is the prefix of output result file.
 
 - `--batch_size`:
   -  The number of sequences to be predicted once iteratively, and this value can be set larger, the default setting is 10.
@@ -113,6 +80,47 @@ python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
 
 - `--group`:
   -  Perform group-level functional classification on protein sequences. If this parameter is not specified, group-level classification will not be performed.
+
+
+
+####:houses: Classification & Train
+
+In a single GPU or CPU environment, run `classifier.py`. In addition, to speed up functional protein annotation, an easy-to-use program that uses multiple GPUs simultaneously is also provided as `classifier_Multi_GPUs.py`
+
+```python
+# Take an example of the class and group classification of resistance genes
+# Using CPU
+python classifier.py \
+--input example/Resistance_gene/test.fasta \
+--output example/Resistance_gene/output_class \
+--adapter ARGs \
+--group \
+--nogpu
+
+# Using GPU 
+python classifier.py \
+--input example/Resistance_gene/test.fasta \
+--output example/Resistance_gene/output_class\
+--adapter ARGs \
+--group \
+--gpu 0
+
+# Using Multi-GPUs
+CUDA_VISIBLE_DEVICES="0,1" 
+python -m torch.distributed.launch --nproc_per_node=2 classifier_Multi_GPUs.py \
+--input example/Resistance_gene/test.fasta \
+--output example/Resistance_gene/output_class \
+--adapter ARGs \
+--group 
+-------------------------------------------
+python -m torch.distributed.launch --nproc_per_node=2 classifier_Multi_GPUs.py \
+--input example/Resistance_gene/test.fasta \
+--output example/Resistance_gene/output_class \
+--adapter ARGs \
+--group 
+```
+
+
 
 ---
 
