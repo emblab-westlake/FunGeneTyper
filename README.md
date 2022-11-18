@@ -50,7 +50,7 @@ pip install biopython
 
 ## Usage
 
-####:house_with_garden:  **Description**
+#### :house_with_garden:  **Description**
 
 FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save a large-scale pre-trained model parameter locally and only needs to download or upload a small number of Adapter parameters separately for each functional annotation task. The Adapter architecture is not only conducive to model training but also more convenient for others in the community to use, thereby building a more powerful protein function annotation community.
 
@@ -83,7 +83,7 @@ python classifier.py -h
 
 
 
-####:houses: Classification & Train
+#### :houses: Classification & Train
 
 In a single GPU or CPU environment, run `classifier.py`. In addition, to speed up functional protein annotation, an easy-to-use program that uses multiple GPUs simultaneously is also provided as `classifier_Multi_GPUs.py`
 
