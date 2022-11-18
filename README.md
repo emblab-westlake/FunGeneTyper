@@ -56,7 +56,7 @@ FunGeneType is built based on a protein pre-training language model. Due to the 
 
 ####:houses: Test & Train
 
-In a single GPU or CPU environment, run `Test_model.py`. In addition, to speed up functional protein annotation, an easy-to-use program that uses multiple GPUs simultaneously is also provided as `Test_Multi_GPUs.py`
+In a single GPU or CPU environment, run `classifier.py`. In addition, to speed up functional protein annotation, an easy-to-use program that uses multiple GPUs simultaneously is also provided as `classifier_Multi_GPUs.py`
 
 ```python
 # Take an example of the class and group classification of resistance genes
@@ -64,7 +64,7 @@ In a single GPU or CPU environment, run `Test_model.py`. In addition, to speed u
 python Test_model.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class.txt \
---model ARGs \
+--adapter ARGs \
 --group \
 --nogpu
 
@@ -72,7 +72,7 @@ python Test_model.py \
 python Test_model.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class.txt \
---model ARGs \
+--adapter ARGs \
 --group \
 --gpu 0
 
@@ -81,13 +81,13 @@ CUDA_VISIBLE_DEVICES="0,1"
 python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class.txt \
---model ARGs \
+--adapter ARGs \
 --group 
 -------------------------------------------
 python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class.txt \
---model ARGs \
+--adapter ARGs \
 --group 
 ```
 
@@ -108,8 +108,8 @@ python -m torch.distributed.launch --nproc_per_node=2 Test_Multi_GPUs.py \
 - `--gpu`:
   -  Use the GPU to run the program. This value determines which GPU is used to run the program.
 
-- `--model`:
-  -  Models used, currently including `ARGs` and `VFs`.
+- `--adapter`:
+  -  Adapter used, default including `ARGs` and `VFs`.
 
 - `--group`:
   -  Perform group-level functional classification on protein sequences. If this parameter is not specified, group-level classification will not be performed.
