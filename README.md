@@ -52,7 +52,7 @@ pip install biopython
 
 #### :house_with_garden:  **Description**
 
-FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save a large-scale pre-trained model parameter locally and only needs to download or upload a small number of Adapter parameters separately for each functional annotation task. The Adapter architecture is not only conducive to model training but also more convenient for others in the community to use, thereby building a more powerful protein function annotation community.
+FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save one large-scale pre-trained model parameter locally, and only a small number of Adapter parameters need to be downloaded or uploaded separately for each functional classification task.The Adapter architecture not only facilitates model training, but also makes it easier for others in the community to use it, thereby building a more powerful protein function annotation community.
 
 
 
@@ -73,13 +73,13 @@ python classifier.py -h
   -  Use the CPU to run programs.
 
 - `--gpu`:
-  -  Use the GPU to run the program. This value determines which GPU is used to run the program.
+  -  Run the program using the GPU. This value determines which GPU is used to run the program.
 
 - `--adapter`:
-  -  Adapter used, default including `ARGs` and `VFs`.
+  -  Adapter, default including `ARGs` and `VFs`.
 
 - `--group`:
-  -  Perform group-level functional classification on protein sequences. If this parameter is not specified, group-level classification will not be performed.
+  -  Perform subtype-level functional classification on protein sequences. If this parameter is not specified, subtype-level classification will not be performed.
 
 
 
@@ -134,7 +134,7 @@ You can also train a class-level classification or group-level classification mo
 python Train_class.py --Train_category 20
 ```
 
-`--Train_category`: Number of categories to classify ##Todo, modify 
+`--Train_category`: Number of categories to classify 
 
 
 
