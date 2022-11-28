@@ -113,7 +113,7 @@ python -m torch.distributed.launch --nproc_per_node=2 classifier-Multi-GPUs.py \
 --adapter ARGs \
 --group 
 -------------------------------------------
-python -m torch.distributed.launch --nproc_per_node=2 classifier_Multi_GPUs.py \
+python -m torch.distributed.launch --nproc_per_node=2 classifier-Multi-GPUs.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class \
 --adapter ARGs \
