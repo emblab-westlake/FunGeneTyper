@@ -22,7 +22,7 @@ FunGeneType communicates with  the following separate libraries and packages:
 
 **`PyTorch`** 
 
-We strongly recommend using the GPU version of PyTorch if you have a GPU. If not, you can install the CPU version of PyTorch by using the following command. For GPU version installation, see [PyTorch official website](https://github.com/pytorch/pytorch)
+We strongly recommend using the GPU version of PyTorch if you have a GPU. If not, you can install the CPU version of PyTorch by using the following command. For GPU version installation, Please refer to  [PyTorch official website](https://github.com/pytorch/pytorch)
 
 ```python
 conda install pytorch torchvision torchaudio cpuonly -c pytorch
@@ -107,7 +107,7 @@ python classifier.py \
 
 # Using Multi-GPUs
 CUDA_VISIBLE_DEVICES="0,1" 
-python -m torch.distributed.launch --nproc_per_node=2 classifier_Multi_GPUs.py \
+python -m torch.distributed.launch --nproc_per_node=2 classifier-Multi-GPUs.py \
 --input example/Resistance_gene/test.fasta \
 --output example/Resistance_gene/output_class \
 --adapter ARGs \
