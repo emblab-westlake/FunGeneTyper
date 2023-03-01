@@ -1,6 +1,6 @@
-# README
+# FunGeneTyper
 
-FunGeneType is a unified functional annotation framework of proteins. It now can annotate proteins of antibiotic resistance genes (ARGs)  and virulence factors(VFs) at class/group level.  Due to the easy-to-use Adapter architecture, FunGeneTyper is expected to be gradually built into an open community. 
+FunGeneTyper is a unified functional annotation framework of proteins. It now can annotate proteins of antibiotic resistance genes (ARGs)  and virulence factors(VFs) at class/group level.  Due to the easy-to-use Adapter architecture, FunGeneTyper is expected to be gradually built into an open community. 
 
 
 
@@ -8,9 +8,9 @@ FunGeneType is a unified functional annotation framework of proteins. It now can
 
 FunGeneType communicates with  the following separate libraries and packages:
 
-- [PyTorch](https://github.com/pytorch/pytorch)   (test on versions `1.8.0`)
+- [PyTorch](https://github.com/pytorch/pytorch)   (test on version `1.8.0`)
 
-- [faiss](https://github.com/facebookresearch/faiss)     (test on versions `1.7.1`)
+- [faiss](https://github.com/facebookresearch/faiss)     (test on version `1.7.1`)
 
 - [tqdm](https://github.com/tqdm/tqdm)      
 
@@ -19,7 +19,7 @@ FunGeneType communicates with  the following separate libraries and packages:
 
 
 ## First-time setup	
-
+### Dependence
 **`PyTorch`** 
 
 We strongly recommend using the GPU version of PyTorch if you have a GPU. If not, you can install the CPU version of PyTorch by using the following command. For GPU version installation, Please refer to  [PyTorch official website](https://github.com/pytorch/pytorch)
@@ -45,6 +45,15 @@ pip install tqdm
 ```python
 pip install biopython
 ```
+
+
+### Download FunGeneTyper and initialization Settings
+You can download the code to the specified directory in the following way.
+```
+git clone https://github.com/emblab-westlake/FunGeneTyper.git
+```
+Before starting the first analysis, please run the `download_pretrain_weights.sh` to  download pretrain weight parameters for FunGeneTyper.
+
 
 
 
@@ -144,3 +153,8 @@ Similarly, you can train the Group classification by running the following code:
 python Train_group.py
 ```
 
+
+
+## Contact
+
+If you have any problems with the framework, please raise the issue or contact zhangguoqing84@westlake.edu.cn
