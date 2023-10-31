@@ -1,6 +1,10 @@
-# FunGeneTyper
+# ![image-20231031181844548](example/log.png)
 
-FunGeneTyper is a unified functional annotation framework of proteins. It now can annotate proteins of antibiotic resistance genes (ARGs)  and virulence factors(VFs) at class/group level.  Due to the easy-to-use Adapter architecture, FunGeneTyper is expected to be gradually built into an open community. 
+**FunGeneTyper** is a unified functional annotation framework of proteins. This repository contains codes and data for annotating proteins of antibiotic resistance genes (ARGs)  and virulence factors(VFs) at class/group level.  You can find more details about **FunGenTyper** in our paper, ["**Ultra-Accurate Classification and Discovery of Microbial Protein Functions Using FunGeneTyper: An Extensible Deep Learning Framework**"](https://www.biorxiv.org/content/10.1101/2022.12.28.522150v2)
+
+ Due to the easy-to-use Adapter architecture, FunGeneTyper is expected to be gradually built into an open community. 
+
+
 
 
 
@@ -9,11 +13,8 @@ FunGeneTyper is a unified functional annotation framework of proteins. It now ca
 FunGeneType communicates with  the following separate libraries and packages:
 
 - [PyTorch](https://github.com/pytorch/pytorch)   (test on version `1.8.0`)
-
 - [faiss](https://github.com/facebookresearch/faiss)     (test on version `1.7.1`)
-
 - [tqdm](https://github.com/tqdm/tqdm)      
-
 - [Biopython](https://biopython.org/)  
 
 
@@ -45,6 +46,8 @@ pip install tqdm
 ```python
 pip install biopython
 ```
+
+notes: If you encounter problems with MKL missing libraries, install the specified version of MKL with `conda install mkl==2021.4.0`.
 
 
 ### Download FunGeneTyper and initialization Settings
@@ -137,7 +140,11 @@ python -m torch.distributed.launch --nproc_per_node=2 classifier-Multi-GPUs.py \
 
 **Train**
 
-You can also train a class-level classification or group-level classification model based on your own data, refer to the examples we gave. Taking the training of resistance genes (ARGs) as an example, you can train the class classification by running the following code:
+You can also train a class-level classification or group-level classification model based on your own data, refer to the related notebooks under the **'Tutorials/'** for detailed dataset construction process.  **You can generate all datasets related to antibiotic resistance genes (ARGs) directly using these notebooks and reproduce the results presented in our paper. Additionally, you can also download these datasets through the provided links and store them in the specified local directory.**
+
+
+
+Taking the training of resistance genes (ARGs) as an example, you can train the class classification by running the following code.  Please download the datasets through [the provided link](https://drive.google.com/drive/folders/1uKP9-IIkOXqgQYSSfruycdCyl0otY41J?usp=drive_link) and place them in the 'example/ARGs_class_TrainingData/' folder. 
 
 ```python
 python Train_class.py --Train_category 20
@@ -147,7 +154,7 @@ python Train_class.py --Train_category 20
 
 
 
-Similarly, you can train the Group classification by running the following code:
+Similarly, you can train the Group classification by running the following code. Please download the datasets through [the provided link](https://drive.google.com/drive/folders/1QZHu0lY1-l_qdL9xu7BVZMtaEzVnydwO?usp=drive_link) and place them in the 'example/ARGs_group_TrainingData/' folder. 
 
 ```python
 python Train_group.py
@@ -155,6 +162,17 @@ python Train_group.py
 
 
 
-## Contact
+## Citation
+
+```
+@article{zhang2022ultra,
+  title={Ultra-Accurate Classification and Discovery of Functional Protein-Coding Genes from Microbiomes Using FunGeneTyper: An Expandable Deep Learning-Based Framework},
+  author={Zhang, Guoqing and Wang, Hui and Zhang, Zhiguo and Zhang, Lu and Guo, Guibing and Yang, Jian and Yuan, Fajie and Ju, Feng},
+  journal={bioRxiv},
+  pages={2022--12},
+  year={2022},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
 
 If you have any problems with the framework, please raise the issue or contact zhangguoqing84@westlake.edu.cn
