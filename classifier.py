@@ -92,12 +92,21 @@ if __name__ == '__main__':
         model2.to(device)
 
         # load backbone parameters
-        state_dict_backbone = {".".join(k.split(".")[1:]): v for k, v in
-                               torch.load("Pretrained_model/backbone.pkl").items() if "modelEsm" in k}
-        model2.load_state_dict(collections.OrderedDict(state_dict_backbone), strict=False)
+        if not args.nogpu:
+            state_dict_backbone = {".".join(k.split(".")[1:]): v for k, v in
+                                torch.load("Pretrained_model/backbone.pkl").items() if "modelEsm" in k}
+            model2.load_state_dict(collections.OrderedDict(state_dict_backbone), strict=False)
+        else:
+            state_dict_backbone = {".".join(k.split(".")[1:]): v for k, v in
+                                torch.load("Pretrained_model/backbone.pkl", map_location="cpu").items() if "modelEsm" in k}
+            model2.load_state_dict(collections.OrderedDict(state_dict_backbone), strict=False)        
 
         # load adapter and dnn parameters of group model
-        model2.load_state_dict(torch.load(Test_dict[args.adapter]["group_model"]), strict=False)
+        #model2.load_state_dict(torch.load(Test_dict[args.adapter]["group_model"]), strict=False)
+        model2.load_state_dict(
+        torch.load(Test_dict[args.adapter]["group_model"]), strict=False) if not args.nogpu else model2.load_state_dict(
+        torch.load(Test_dict[args.adapter]["group_model"], map_location="cpu"), strict=False)
+
         model2.eval()
 
         # dataset

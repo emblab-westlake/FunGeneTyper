@@ -62,6 +62,12 @@ Before starting the first analysis, please run the `download_pretrain_weights.sh
 
 ## Usage
 
+#### :heavy_exclamation_mark: **Important Note**
+
+FunGeneTyper is a framework for deep learning models. Although a CPU version of the model is available, we highly recommend using a GPU-accelerated server to enhance efficiency and maximize performance.
+
+
+
 #### :house_with_garden:  **Description**
 
 FunGeneType is built based on a protein pre-training language model. Due to the hundreds of millions of parameters in the pre-training model, fine-tuning all parameters for every task is redundant and inefficient. We propose adapter modules inserted into each Transformer block as a few trainable parameters. The Adapter architecture method allows each research group to only save one large-scale pre-trained model parameter locally, and only a small number of Adapter parameters need to be downloaded or uploaded separately for each functional classification task.The Adapter architecture not only facilitates model training, but also makes it easier for others in the community to use it, thereby building a more powerful protein function annotation community.
@@ -175,4 +181,4 @@ python Train_group.py
 }
 ```
 
-If you have any problems with the framework, please raise the issue or contact zhangguoqing84@westlake.edu.cn
+If you have any problems with the framework, please raise the issue or contact zhangguoqing84@westlake.edu.cn,we will actively update and maintain.
