@@ -73,6 +73,11 @@ def params_parser():
         help="Do not use GPU even if available"
     )
     parser.add_argument(
+        "--topK",
+        type=int,
+        default=1
+    )
+    parser.add_argument(
         "--adapter",
         type=str,
         default="ARGs",

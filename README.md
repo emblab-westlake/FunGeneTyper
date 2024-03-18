@@ -1,6 +1,6 @@
 # ![image-20231031181844548](example/log.png)
 
-**FunGeneTyper** is a unified functional classification framework of protein coding genes. This repository contains codes and data for classifying protein coding genes of antibiotic resistance genes (ARGs)  and virulence factor genes (VFGs) at Type/Subtype level.  You can find more details about **FunGenTyper** in our paper, ["**Ultra-Accurate Classification and Discovery of Microbial Protein Functions Using FunGeneTyper: An Extensible Deep Learning Framework**"](https://www.biorxiv.org/content/10.1101/2022.12.28.522150v2). 
+**FunGeneTyper** is a unified functional classification framework of protein coding genes. This repository contains codes and data for classifying protein coding genes of antibiotic resistance genes (ARGs)  and virulence factor genes (VFGs) at Type/Subtype level.  You can find more details about **FunGenTyper** in our paper, ["**Highly-Accurate Classification and Discovery of Microbial Protein Functions Using FunGeneTyper: An Extensible Deep Learning Framework**"](https://www.biorxiv.org/content/10.1101/2022.12.28.522150v2). 
 
 FunGeneTyper can be extended to other classes of functional genes. Our expectation is that the straightforward adapter architecture will foster the gradual growth of an inclusive community focused on functional gene classification, leveraging the capabilities of FunGeneTyper.
 
@@ -94,8 +94,13 @@ python classifier.py -h
 - `--adapter`:
   -  Adapter, default including `ARGs` and `VFs`.
 
+- `--topK`:
+  -  Top K representative subtype. Default 1.
+  
 - `--group`:
   -  Perform subtype-level functional classification on protein sequences. If this parameter is not specified, subtype-level classification will not be performed.
+
+
 
 
 

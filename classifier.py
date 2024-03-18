@@ -127,9 +127,9 @@ if __name__ == '__main__':
         index = faiss.IndexFlatL2(1280)
         index.add(dataArray)
 
-        output_group = args.output + "output_group.txt"
+        output_group = "/".join(args.output.split("/")[:-1]) + "/output_group.txt"
         with open(output_group, "a+", encoding="utf-8") as write:
-            write.write("id \t class_category \t group_category \t group_category_detailed \n")
+            write.write("id \t class_category \n")
             for k, test in tqdm(enumerate(test_data_dataset_group), postfix="annotation proteins (group level)..."):
                 test_seq, ids, seq = test
                 test_seq = test_seq.to(device)
@@ -137,9 +137,12 @@ if __name__ == '__main__':
                     result = model2(test_seq, repr_layers=[33], return_contacts=False)
                     Rep = result["representations"][33][:, 0, :].squeeze(dim=1).cpu()
                 dataTest = np.array(Rep).astype('float32')
-                D, I = index.search(dataTest, k=1)
-                for num, id_out in enumerate(I):
-                    id = id_out[0]
-                    label_predict = linecache.getline(Test_dict[args.adapter]["Core"], id + 1).strip().split("\t")
-                    write.write(ids[num].split("&&&")[0] + "\t" + str(label_predict[1:]) + "\n")
+                D, I = index.search(dataTest, k=args.topK)
+                for distance, (num, id_out) in zip(D,enumerate(I)):
+                    all_label_predict = []
+                    for dist, id in zip(distance,id_out):
+                        if id != -1:
+                            label_predict = linecache.getline(Test_dict[args.model]["Core"],id + 1).strip().split("\t")[1]
+                            all_label_predict.append(label_predict+" (Rank in core data: {} Distance: {:.2f})".format(id+1, dist))
+                    write.write(ids[num].split("&&&")[0] + "\t" + ",".join(all_label_predict) + "\n")
         print("Group level prediction Over!")
