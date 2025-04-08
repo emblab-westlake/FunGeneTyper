@@ -1,6 +1,6 @@
 # ![image-20231031181844548](example/log.png)
 
-**FunGeneTyper** is a unified functional classification framework of protein coding genes. This repository contains codes and data for classifying protein coding genes of antibiotic resistance genes (ARGs)  and virulence factor genes (VFGs) at Type/Subtype level.  You can find more details about **FunGenTyper** in our paper, ["**Highly-Accurate Classification and Discovery of Microbial Protein Functions Using FunGeneTyper: An Extensible Deep Learning Framework**"](https://www.biorxiv.org/content/10.1101/2022.12.28.522150v2). 
+**FunGeneTyper** is a unified functional classification framework of protein coding genes. This repository contains codes and data for classifying protein coding genes of antibiotic resistance genes (ARGs)  and virulence factor genes (VFGs) at Type/Subtype level.  You can find more details about **FunGenTyper** in our papers (["**Zhang, Ju et al. 2024. BIB**"](https://academic.oup.com/bib/article/25/4/bbae319/7713721?login=true); ["**Zhang, Ju et al. 2022. bioxiv**"](https://www.biorxiv.org/content/10.1101/2022.12.28.522150v2). 
 
 FunGeneTyper can be extended to other classes of functional genes. Our expectation is that the straightforward adapter architecture will foster the gradual growth of an inclusive community focused on functional gene classification, leveraging the capabilities of FunGeneTyper.
 
@@ -8,7 +8,7 @@ FunGeneTyper can be extended to other classes of functional genes. Our expectati
 
 ## Requirements
 
-FunGeneType communicates with  the following separate libraries and packages:
+FunGeneTyper communicates with  the following separate libraries and packages:
 
 - [PyTorch](https://github.com/pytorch/pytorch)   (test on version `1.8.0`)
 - [faiss](https://github.com/facebookresearch/faiss)     (test on version `1.7.1`)
